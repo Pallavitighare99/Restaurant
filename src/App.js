@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, Switch } from 'react-router-dom';
 import Create from './component/Create';
 import Detail from './component/Detail';
 import Home from './component/Home';
@@ -8,6 +8,8 @@ import List from './component/List';
 import Search from './component/Search';
 import Update from './component/Update';
 import { Navbar, Container, Nav } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome, faListUl, faPlus, faSearch } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   return (
@@ -19,11 +21,10 @@ function App() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link ><Link to="/">Home</Link></Nav.Link>
-                <Nav.Link ><Link to="/list">List</Link></Nav.Link>
-                <Nav.Link ><Link to="/create">Create</Link></Nav.Link>
-                <Nav.Link ><Link to="/search">Search</Link></Nav.Link>
-                <Nav.Link ><Link to="/update">Update</Link></Nav.Link>
+                <Nav.Link ><Link to="/"><FontAwesomeIcon icon={faHome} />&nbsp;Home</Link></Nav.Link>
+                <Nav.Link ><Link to="/list"><FontAwesomeIcon icon={faListUl} />&nbsp;List</Link></Nav.Link>
+                <Nav.Link ><Link to="/create"><FontAwesomeIcon icon={faPlus} />&nbsp;Create</Link></Nav.Link>
+                <Nav.Link ><Link to="/search"><FontAwesomeIcon icon={faSearch} />&nbsp;Search</Link></Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>

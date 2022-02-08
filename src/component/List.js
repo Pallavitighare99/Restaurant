@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
-import { Link, Route,Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 class List extends Component {
     constructor() {
@@ -10,10 +12,28 @@ class List extends Component {
         }
     }
     componentDidMount() {
+        this.getData()
+    }
+    getData(){
         fetch('http://localhost:3000/restaurent').then((resp) => {
             resp.json().then((result) => {
                 this.setState({ list: result })
             })
+        })
+    }
+    delete(id) {
+        fetch('http://localhost:3000/restaurent/' + id, {
+            method: "DELETE",
+            // headers: {
+            //     'content-Type': 'application/json'
+            // },
+            // body: JSON.stringify(this.state)
+        }).then((result) => {
+            result.json().then((resp) => {
+                alert("Restaurent has been deleted")
+                this.getData()
+            })
+
         })
     }
     render() {
@@ -43,7 +63,8 @@ class List extends Component {
                                                 <td>{item.address}</td>
                                                 <td>{item.rating}</td>
                                                 <td>{item.email}</td>
-                                                <td><Link to={'/update'+item.id} >Edit</Link></td>
+                                                <td><Link to={"/update/" + item.id} ><FontAwesomeIcon icon={faEdit} /></Link>&nbsp;&nbsp;
+                                                    <span onClick={() => this.delete(item.id)} ><FontAwesomeIcon icon={faTrash} color="red" /></span></td>
                                             </tr>
                                         )
                                     }
