@@ -1,0 +1,26 @@
+.main{
+    margin-top: 40px;
+}
+.card{
+    width: 40%;
+    position: relative;
+    left: 30%;
+    
+}
+p{
+    color: red;
+}
+.Form.Control Form.Control[type=text]{
+    padding-left: 40px;
+}
+.forgot{
+    position: relative;
+    right: 25%;
+}
+.register{
+    position: relative;
+    left: 25%;
+}
+.body{
+    background-color: rgb(233, 233, 238);
+}
